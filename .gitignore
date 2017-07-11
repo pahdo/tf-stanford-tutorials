@@ -1,4 +1,5 @@
-
+.DS_Store
+my_notebooks/data/*
 *.pdf
 
 *.SUNet
