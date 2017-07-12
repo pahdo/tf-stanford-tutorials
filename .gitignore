@@ -1,5 +1,6 @@
 .DS_Store
 my_notebooks/data/*
+my_notebooks/checkpoints/*
 *.pdf
 
 *.SUNet
