@@ -12,5 +12,9 @@ examples/checkpoints/*
 examples/chatbot/processed/*
 examples/chatbot/checkpoints/*
 examples/chatbot/data_analysis.py
+assignments/style_transfer_starter/graphs/*
+assignments/style_transfer_starter/imagenet-vgg-verydeep-19.mat
 
 assignments/chatbot/processed/*
+assignments/style_transfer_starter/checkpoints/*
+

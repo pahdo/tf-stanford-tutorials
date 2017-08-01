@@ -21,7 +21,7 @@ def _weights(vgg_layers, layer, expected_layer_name):
     return W, b.reshape(b.size)
 
 def _conv2d_relu(vgg_layers, prev_layer, layer, layer_name):
-    """ Return the Conv2D layer with RELU using the weights, biases from the VGG
+    """ Return the Conv2D layer with ReLU using the weights, biases from the VGG
     model at 'layer'.
     Inputs:
         vgg_layers: holding all the layers of VGGNet
@@ -29,31 +29,25 @@ def _conv2d_relu(vgg_layers, prev_layer, layer, layer_name):
         layer: the index to current layer in vgg_layers
         layer_name: the string that is the name of the current layer.
                     It's used to specify variable_scope.
-
     Output:
-        relu applied on the convolution.
-
-    Note that you first need to obtain W and b from vgg-layers using the function
-    _weights() defined above.
-    W and b returned from _weights() are numpy arrays, so you have
-    to convert them to TF tensors using tf.constant.
-    Note that you'll have to do apply relu on the convolution.
-    Hint for choosing strides size: 
-        for small images, you probably don't want to skip any pixel
+        ReLU applied on the convolution.
     """
-    pass
+    with tf.variable_scope(layer_name) as scope:
+        W_, b_ = _weights(vgg_layers, layer, layer_name)
+        W = tf.constant(W_)
+        b = tf.constant(b_)
+        conv = tf.nn.conv2d(prev_layer, W, strides=[1,1,1,1], padding='SAME')
+    return tf.nn.relu(conv + b)
 
 def _avgpool(prev_layer):
     """ Return the average pooling layer. The paper suggests that average pooling
     actually works better than max pooling.
     Input:
         prev_layer: the output tensor from the previous layer
-
     Output:
         the output of the tf.nn.avg_pool() function.
-    Hint for choosing strides and kszie: choose what you feel appropriate
     """
-    pass
+    return tf.nn.avg_pool(prev_layer, ksize=[1,2,2,1], strides=[1,1,1,1], padding='SAME')
 
 def load_vgg(path, input_image):
     """ Load VGG into a TensorFlow model.
