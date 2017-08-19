@@ -1,0 +1,6 @@
+model_checkpoint_path: "chatbot-58200"
+all_model_checkpoint_paths: "chatbot-57800"
+all_model_checkpoint_paths: "chatbot-57900"
+all_model_checkpoint_paths: "chatbot-58000"
+all_model_checkpoint_paths: "chatbot-58100"
+all_model_checkpoint_paths: "chatbot-58200"
